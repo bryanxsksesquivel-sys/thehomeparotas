@@ -15,6 +15,9 @@ import talladoCocodrilo from "@/assets/tallado-cocodrilo.jpg";
 import espejoGrande from "@/assets/espejo-grande-tallado.jpg";
 import mesaVidrio from "@/assets/mesa-parota-vidrio.jpg";
 import mesaCocodrilos from "@/assets/mesa-parota-cocodrilos.jpg";
+import Navbar from "@/components/Navbar";
+import FooterContact from "@/components/FooterContact";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const images = [
   { src: talladoSanJudas, title: "Tallado San Judas Tadeo", category: "Tallados" },
