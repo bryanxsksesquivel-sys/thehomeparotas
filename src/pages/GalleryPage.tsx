@@ -8,11 +8,22 @@ import gallery6 from "@/assets/gallery-6.jpg";
 import mesasImg from "@/assets/service-mesas.jpg";
 import espejosImg from "@/assets/service-espejos.jpg";
 import disenoImg from "@/assets/service-diseno.jpg";
-import Navbar from "@/components/Navbar";
-import FooterContact from "@/components/FooterContact";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import talladoSanJudas from "@/assets/tallado-san-judas.jpg";
+import espejoParota from "@/assets/espejo-parota-natural.jpg";
+import talladoSerpiente from "@/assets/tallado-serpiente.jpg";
+import talladoCocodrilo from "@/assets/tallado-cocodrilo.jpg";
+import espejoGrande from "@/assets/espejo-grande-tallado.jpg";
+import mesaVidrio from "@/assets/mesa-parota-vidrio.jpg";
+import mesaCocodrilos from "@/assets/mesa-parota-cocodrilos.jpg";
 
 const images = [
+  { src: talladoSanJudas, title: "Tallado San Judas Tadeo", category: "Tallados" },
+  { src: espejoParota, title: "Espejo con Marco Live Edge", category: "Espejos" },
+  { src: mesaVidrio, title: "Mesa de Centro con Vitrina", category: "Mesas" },
+  { src: talladoSerpiente, title: "Tallado Serpiente en Relieve", category: "Tallados" },
+  { src: espejoGrande, title: "Espejo Grande con Tallado", category: "Espejos" },
+  { src: mesaCocodrilos, title: "Mesa Live Edge con Cocodrilos", category: "Mesas" },
+  { src: talladoCocodrilo, title: "Cocodrilo Tallado en Madera", category: "Tallados" },
   { src: mesasImg, title: "Mesa de Parota Live Edge", category: "Mesas" },
   { src: gallery2, title: "Espejo con Marco de Parota", category: "Espejos" },
   { src: gallery1, title: "Mesa de Centro Rústica", category: "Mesas" },

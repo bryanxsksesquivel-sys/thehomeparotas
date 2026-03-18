@@ -7,6 +7,7 @@ const WHATSAPP_URL = "https://wa.me/527203575136?text=Hola%2C%20me%20interesa%20
 const navItems = [
   { label: "Inicio", path: "/" },
   { label: "Galería", path: "/galeria" },
+  { label: "Creaciones", path: "/creaciones" },
   { label: "Nosotros", path: "/nosotros" },
   { label: "Contacto", path: "/contacto" },
 ];
