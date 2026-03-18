@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import GalleryPage from "./pages/GalleryPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
+import CreacionesPage from "./pages/CreacionesPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
