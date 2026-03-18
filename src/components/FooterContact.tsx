@@ -4,72 +4,105 @@ const WHATSAPP_URL = "https://wa.me/527203575136?text=Hola%2C%20me%20interesa%20
 
 const FooterContact = () => {
   return (
-    <footer className="border-t border-foreground/10 px-8 md:px-16 py-[15vh] md:py-[20vh]">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-        {/* Brand */}
+    <footer className="bg-foreground px-8 md:px-16 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto">
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
+          className="text-center mb-20"
         >
-          <h2 className="font-display font-light text-3xl md:text-4xl tracking-tight text-foreground">
-            Iniciar conversación de proyecto
+          <div className="w-12 h-0.5 bg-gold mx-auto mb-6" />
+          <h2 className="font-display font-light text-4xl md:text-5xl tracking-tight text-background">
+            ¿Listo para tu pieza única?
           </h2>
-          <div className="mt-8">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-foreground px-10 py-5 text-sm font-body uppercase tracking-widest text-foreground transition-all duration-500 hover:bg-foreground hover:text-background"
-              style={{ transitionTimingFunction: "cubic-bezier(0.19, 1, 0.22, 1)" }}
-            >
-              WhatsApp
-            </a>
-          </div>
+          <p className="font-body text-background/50 mt-4 max-w-md mx-auto">
+            Cada proyecto comienza con una conversación. Cuéntanos tu idea.
+          </p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-8 border border-background/30 px-10 py-5 text-sm font-body uppercase tracking-widest text-background transition-all duration-500 hover:bg-background hover:text-foreground"
+            style={{ transitionTimingFunction: "cubic-bezier(0.19, 1, 0.22, 1)" }}
+          >
+            Iniciar conversación
+          </a>
         </motion.div>
 
-        {/* Contact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
-          className="space-y-6"
-        >
-          <p className="text-xs font-body uppercase tracking-widest text-muted-foreground">Contacto</p>
-          <div className="space-y-3 font-body text-sm text-foreground">
-            <p className="tabular-nums">7203575136</p>
-            <p>brayanisai2008@gmail.com</p>
-          </div>
-        </motion.div>
+        {/* Info grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-background/10 pt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
+          >
+            <p className="font-display text-xl text-background tracking-tight">Parota</p>
+            <p className="font-body text-xs text-background/40 mt-2">Taller de Ebanistería</p>
+          </motion.div>
 
-        {/* Location */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
-          className="space-y-6"
-        >
-          <p className="text-xs font-body uppercase tracking-widest text-muted-foreground">Ubicación</p>
-          <div className="space-y-3 font-body text-sm text-foreground">
-            <p>El Pirámide, Ocoyoacac</p>
-            <p className="text-muted-foreground">Zona de Los Arcos</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
+            className="space-y-4"
+          >
+            <p className="text-xs font-body uppercase tracking-widest text-background/40">Contacto</p>
+            <div className="space-y-2 font-body text-sm text-background/70">
+              <p className="tabular-nums">7203575136</p>
+              <p>brayanisai2008@gmail.com</p>
+            </div>
+          </motion.div>
 
-          <p className="text-xs font-body uppercase tracking-widest text-muted-foreground pt-4">Horarios</p>
-          <div className="font-body text-sm text-foreground">
-            <p>Sábados y Domingos</p>
-            <p className="tabular-nums">7:00 AM — 2:00 PM</p>
-          </div>
-        </motion.div>
-      </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
+            className="space-y-4"
+          >
+            <p className="text-xs font-body uppercase tracking-widest text-background/40">Ubicación</p>
+            <div className="space-y-2 font-body text-sm text-background/70">
+              <p>El Pirámide, Ocoyoacac</p>
+              <p className="text-background/40">Zona de Los Arcos</p>
+            </div>
+          </motion.div>
 
-      <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-foreground/10">
-        <p className="font-body text-xs text-muted-foreground uppercase tracking-widest">
-          © {new Date().getFullYear()} Taller de Ebanistería — Parota
-        </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.2, 0, 0, 1] }}
+            className="space-y-4"
+          >
+            <p className="text-xs font-body uppercase tracking-widest text-background/40">Horarios</p>
+            <div className="font-body text-sm text-background/70">
+              <p>Sábados y Domingos</p>
+              <p className="tabular-nums">7:00 AM — 2:00 PM</p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-body text-xs text-background/30 uppercase tracking-widest">
+            © {new Date().getFullYear()} Taller de Ebanistería — Parota
+          </p>
+          <div className="flex gap-6">
+            {["Inicio", "Galería", "Nosotros", "Contacto"].map((item) => (
+              <a
+                key={item}
+                href={item === "Inicio" ? "/" : `/${item.toLowerCase()}`}
+                className="font-body text-xs uppercase tracking-widest text-background/30 hover:text-background/70 transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -9,7 +9,7 @@
     --background: 40 33% 97%;
     --foreground: 24 12% 10%;
 
-    --card: 40 33% 97%;
+    --card: 30 20% 94%;
     --card-foreground: 24 12% 10%;
 
     --popover: 40 33% 97%;
@@ -18,7 +18,7 @@
     --primary: 28 82% 28%;
     --primary-foreground: 40 33% 97%;
 
-    --secondary: 30 11% 90%;
+    --secondary: 30 15% 88%;
     --secondary-foreground: 24 12% 10%;
 
     --muted: 30 11% 90%;
@@ -35,6 +35,10 @@
     --ring: 28 82% 28%;
 
     --radius: 0.125rem;
+
+    --wood-dark: 15 40% 12%;
+    --wood-warm: 25 60% 22%;
+    --gold: 38 70% 55%;
 
     --shadow-ambient: 0 20px 40px -15px rgba(28, 25, 23, 0.08);
 
@@ -57,6 +61,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
@@ -64,4 +72,64 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+@layer utilities {
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+  .bg-wood-dark {
+    background-color: hsl(var(--wood-dark));
+  }
+  .bg-wood-warm {
+    background-color: hsl(var(--wood-warm));
+  }
+  .text-on-wood {
+    color: hsl(40 33% 97%);
+  }
+}
+
+/* Floating particles animation */
+@keyframes float-up {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, -2px); }
+}
+
+.sawdust-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: hsl(var(--gold) / 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-up linear infinite;
+}
+
+.wood-grain-overlay {
+  position: relative;
+}
+
+.wood-grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 40px,
+    hsl(var(--foreground) / 0.02) 40px,
+    hsl(var(--foreground) / 0.02) 41px
+  );
+  animation: grain-shift 8s ease-in-out infinite;
+  pointer-events: none;
 }
