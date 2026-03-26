@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const WHATSAPP_URL = "https://wa.me/527203575136?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20de%20muebles%20en%20parota.";
 
@@ -19,7 +20,7 @@ const FooterContact = () => {
             ¿Listo para tu pieza única?
           </h2>
           <p className="font-body text-background/50 mt-4 max-w-md mx-auto">
-            Cada proyecto comienza con una conversación. Cuéntanos tu idea.
+            Cada proyecto comienza con una conversación. Cuéntanos tu idea y la hacemos realidad en madera.
           </p>
           <a
             href={WHATSAPP_URL}
@@ -40,8 +41,8 @@ const FooterContact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
           >
-            <p className="font-display text-xl text-background tracking-tight">Parota</p>
-            <p className="font-body text-xs text-background/40 mt-2">Taller de Ebanistería</p>
+            <p className="font-display text-xl text-background tracking-tight">CNC Router Ocoyoacac</p>
+            <p className="font-body text-xs text-background/40 mt-2">Taller de Tallado y Ebanistería</p>
           </motion.div>
 
           <motion.div
@@ -53,7 +54,7 @@ const FooterContact = () => {
           >
             <p className="text-xs font-body uppercase tracking-widest text-background/40">Contacto</p>
             <div className="space-y-2 font-body text-sm text-background/70">
-              <p className="tabular-nums">7203575136</p>
+              <p className="tabular-nums">720 357 5136</p>
               <p>brayanisai2008@gmail.com</p>
             </div>
           </motion.div>
@@ -81,7 +82,7 @@ const FooterContact = () => {
           >
             <p className="text-xs font-body uppercase tracking-widest text-background/40">Horarios</p>
             <div className="font-body text-sm text-background/70">
-              <p>Sábados y Domingos</p>
+              <p>Sábados y domingos</p>
               <p className="tabular-nums">7:00 AM — 2:00 PM</p>
             </div>
           </motion.div>
@@ -89,17 +90,23 @@ const FooterContact = () => {
 
         <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-xs text-background/30 uppercase tracking-widest">
-            © {new Date().getFullYear()} Taller de Ebanistería — Parota
+            © {new Date().getFullYear()} CNC Router Ocoyoacac
           </p>
           <div className="flex gap-6">
-            {["Inicio", "Galería", "Nosotros", "Contacto"].map((item) => (
-              <a
-                key={item}
-                href={item === "Inicio" ? "/" : `/${item.toLowerCase()}`}
+            {[
+              { label: "Inicio", path: "/" },
+              { label: "Galería", path: "/galeria" },
+              { label: "Creaciones", path: "/creaciones" },
+              { label: "Nosotros", path: "/nosotros" },
+              { label: "Contacto", path: "/contacto" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
                 className="font-body text-xs uppercase tracking-widest text-background/30 hover:text-background/70 transition-colors"
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>

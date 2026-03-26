@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import craftsmanImg from "@/assets/craftsman.jpg";
+import craftsmanImg from "@/assets/guadalupana-parota.jpg";
 import woodTexture from "@/assets/wood-texture.jpg";
 
 const AboutSection = () => {
@@ -24,7 +24,7 @@ const AboutSection = () => {
         >
           <img
             src={craftsmanImg}
-            alt="Artesano trabajando madera de parota"
+            alt="Guadalupana tallada en madera de parota — CNC Router Ocoyoacac"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </motion.div>
@@ -47,18 +47,18 @@ const AboutSection = () => {
             </h2>
 
             <p className="mt-8 font-body text-on-wood/70 leading-relaxed max-w-md">
-              Desde nuestro taller en Ocoyoacac, transformamos la madera de parota en piezas únicas que trascienden generaciones. Combinamos la precisión técnica del PLC con la calidez de la mano humana.
+              Desde nuestro taller en Ocoyoacac, transformamos la madera de parota en piezas únicas que trascienden generaciones. Combinamos la precisión técnica del CNC Router con la calidez de la mano artesana.
             </p>
 
             <p className="mt-4 font-body text-on-wood/70 leading-relaxed max-w-md">
-              Cada mesa, espejo y mueble es una obra de arte irrepetible — porque no hay dos vetas iguales en la naturaleza.
+              Tallados religiosos, mesas live edge, espejos con marco natural y figuras artísticas — cada creación es irrepetible porque no hay dos vetas iguales en la naturaleza.
             </p>
 
             <div className="mt-12 grid grid-cols-3 gap-8">
               {[
                 { value: "100+", label: "Piezas creadas" },
                 { value: "Parota", label: "Madera premium" },
-                { value: "PLC", label: "Precisión CNC" },
+                { value: "CNC", label: "Router de precisión" },
               ].map((item) => (
                 <div key={item.label}>
                   <p className="font-display text-3xl text-gold font-light">{item.value}</p>

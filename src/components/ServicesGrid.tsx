@@ -1,31 +1,31 @@
 import { motion } from "framer-motion";
-import mesasImg from "@/assets/service-mesas.jpg";
-import espejosImg from "@/assets/service-espejos.jpg";
-import disenoImg from "@/assets/service-diseno.jpg";
-import maderasImg from "@/assets/service-maderas.jpg";
+import mesasImg from "@/assets/mesa-parota-vidrio.jpg";
+import espejosImg from "@/assets/espejo-redondo-tallado.jpg";
+import disenoImg from "@/assets/indio-tallado.jpg";
+import maderasImg from "@/assets/san-judas-taller.jpg";
 
 const services = [
   {
     title: "Mesas de Parota",
-    description: "Mesas de alta calidad con veta natural única en cada pieza.",
+    description: "Mesas live edge con tallados de cocodrilos, vitrinas de cristal y acabados naturales.",
     image: mesasImg,
     className: "md:col-span-7 aspect-[16/10]",
   },
   {
-    title: "Espejos y Cuadros",
-    description: "Espejos finos y cuadros con detallado de precisión PLC.",
+    title: "Espejos Artesanales",
+    description: "Espejos con marcos de parota tallados a mano, bordes naturales y figuras en relieve.",
     image: espejosImg,
     className: "md:col-span-5 aspect-[4/5]",
   },
   {
-    title: "Muebles Sobre Diseño",
-    description: "Fabricamos cualquier mueble o espejo que el cliente imagine.",
+    title: "Tallados y Figuras CNC",
+    description: "Tallados religiosos, figuras artísticas y diseños personalizados con precisión CNC Router.",
     image: disenoImg,
     className: "md:col-span-5 aspect-square",
   },
   {
-    title: "Variedad de Maderas",
-    description: "Además de parota, manejamos distintas maderas de alta calidad.",
+    title: "Arte Religioso en Madera",
+    description: "Santos, vírgenes, crucifijos y la Última Cena tallados en madera de parota 100% natural.",
     image: maderasImg,
     className: "md:col-span-7 aspect-[16/9]",
   },
@@ -44,7 +44,7 @@ const ServicesGrid = () => {
             transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
             className="text-sm font-body uppercase tracking-[0.25em] text-primary"
           >
-            Productos y Servicios
+            Nuestros Servicios
           </motion.p>
         </div>
 
@@ -55,13 +55,14 @@ const ServicesGrid = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
           className="font-display font-light text-4xl md:text-6xl tracking-tight text-foreground mb-16 px-4"
         >
-          Lo que hacemos
+          Lo que creamos
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {services.map((service, i) => (
-            <motion.div
+            <motion.a
               key={service.title}
+              href="/creaciones"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -84,7 +85,7 @@ const ServicesGrid = () => {
                   {service.description}
                 </p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

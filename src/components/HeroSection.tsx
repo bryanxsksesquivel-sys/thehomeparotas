@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-wood.jpg";
+import heroImage from "@/assets/ultima-cena.jpg";
+import cruzTallada from "@/assets/cruz-tallada.jpg";
 import woodTexture from "@/assets/wood-texture.jpg";
 
 const WHATSAPP_URL = "https://wa.me/527203575136?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20de%20muebles%20en%20parota.";
@@ -28,7 +29,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
           className="text-sm font-body uppercase tracking-[0.25em] text-primary mb-6"
         >
-          Taller de Ebanistería
+          CNC Router Ocoyoacac
         </motion.p>
 
         <motion.h1
@@ -37,8 +38,8 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
           className="font-display font-light text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-foreground text-balance leading-[1.05]"
         >
-          Muebles y Espejos en Madera{" "}
-          <span className="text-primary">100% Parota.</span>
+          Muebles, Espejos y Tallados en{" "}
+          <span className="text-primary">Madera de Parota.</span>
         </motion.h1>
 
         <motion.p
@@ -47,7 +48,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
           className="mt-8 text-lg text-muted-foreground font-body max-w-md leading-relaxed"
         >
-          Diseños únicos, detalles de precisión y trabajos a la medida. Donde la calidez de la veta natural se encuentra con la precisión técnica.
+          Tallados artesanales, mesas live edge, espejos con marco natural y figuras religiosas. Cada pieza es única, hecha a mano con precisión CNC.
         </motion.p>
 
         <motion.div
@@ -82,8 +83,8 @@ const HeroSection = () => {
           className="mt-16 flex gap-12 border-t border-foreground/10 pt-8"
         >
           {[
-            { number: "100%", label: "Parota natural" },
-            { number: "PLC", label: "Precisión técnica" },
+            { number: "100%", label: "Madera natural" },
+            { number: "CNC", label: "Precisión Router" },
             { number: "A medida", label: "Cada pieza" },
           ].map((stat) => (
             <div key={stat.label}>
@@ -103,11 +104,20 @@ const HeroSection = () => {
       >
         <img
           src={heroImage}
-          alt="Mesa de parota con veta natural"
+          alt="La Última Cena tallada en madera de parota — CNC Router Ocoyoacac"
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Warm gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/40" />
+        {/* Small featured piece overlay */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="absolute bottom-6 right-6 w-32 h-32 md:w-44 md:h-44 rounded-sm overflow-hidden shadow-2xl border-2 border-background/20"
+        >
+          <img src={cruzTallada} alt="Cruz tallada en madera" className="w-full h-full object-cover" />
+        </motion.div>
       </motion.div>
     </section>
   );
