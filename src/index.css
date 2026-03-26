@@ -15,8 +15,12 @@
     --popover: 40 33% 97%;
     --popover-foreground: 24 12% 10%;
 
-    --primary: 28 82% 28%;
+    --primary: 25 75% 30%;
     --primary-foreground: 40 33% 97%;
+
+    --copper: 18 65% 38%;
+    --terracotta: 12 55% 45%;
+    --amber: 35 85% 50%;
 
     --secondary: 30 15% 88%;
     --secondary-foreground: 24 12% 10%;
@@ -38,7 +42,7 @@
 
     --wood-dark: 15 40% 12%;
     --wood-warm: 25 60% 22%;
-    --gold: 38 70% 55%;
+    --gold: 38 75% 55%;
 
     --shadow-ambient: 0 20px 40px -15px rgba(28, 25, 23, 0.08);
 
