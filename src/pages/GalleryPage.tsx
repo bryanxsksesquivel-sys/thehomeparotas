@@ -1,13 +1,38 @@
 import { motion } from "framer-motion";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import mesasImg from "@/assets/service-mesas.jpg";
-import espejosImg from "@/assets/service-espejos.jpg";
-import disenoImg from "@/assets/service-diseno.jpg";
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import FooterContact from "@/components/FooterContact";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ImageLightbox from "@/components/ImageLightbox";
+
+import cruzTallada from "@/assets/cruz-tallada.jpg";
+import cobraTallada from "@/assets/cobra-tallada.jpg";
+import platosTallados from "@/assets/platos-tallados.jpg";
+import sanJudasGrande from "@/assets/san-judas-grande.jpg";
+import virgenesCruces from "@/assets/virgenes-cruces.jpg";
+import medallonCristo from "@/assets/medallón-cristo.jpg";
+import mantoCristo from "@/assets/manto-cristo.jpg";
+import rostroOval from "@/assets/rostro-oval.jpg";
+import medallonOrnamental from "@/assets/medallon-ornamental.jpg";
+import sanJorgeDragon from "@/assets/san-jorge-dragon.jpg";
+import ultimaCena from "@/assets/ultima-cena.jpg";
+import sagradoCorazon from "@/assets/sagrado-corazon.jpg";
+import dragonTallado from "@/assets/dragon-tallado.jpg";
+import corazonTallado from "@/assets/corazon-tallado.jpg";
+import sanJudasTaller from "@/assets/san-judas-taller.jpg";
+import indioTallado from "@/assets/indio-tallado.jpg";
+import mesaCocodrilosTaller from "@/assets/mesa-cocodrilos-taller.jpg";
+import planoDragonTigre from "@/assets/plano-dragon-tigre.jpg";
+import caballoTallado from "@/assets/caballo-tallado.jpg";
+import guadalupanaParota from "@/assets/guadalupana-parota.jpg";
+import espejoRedondoTallado from "@/assets/espejo-redondo-tallado.jpg";
+import guadalupanaClara from "@/assets/guadalupana-clara.jpg";
+import relieveOracion from "@/assets/relieve-oracion.jpg";
+import cruzInriExterior from "@/assets/cruz-inri-exterior.jpg";
+import sanJudasPersonalizado from "@/assets/san-judas-personalizado.jpg";
+import virgenLiveEdge from "@/assets/virgen-live-edge.jpg";
+import cristoCrucifijo from "@/assets/cristo-crucifijo.jpg";
+
 import talladoSanJudas from "@/assets/tallado-san-judas.jpg";
 import espejoParota from "@/assets/espejo-parota-natural.jpg";
 import talladoSerpiente from "@/assets/tallado-serpiente.jpg";
@@ -15,34 +40,66 @@ import talladoCocodrilo from "@/assets/tallado-cocodrilo.jpg";
 import espejoGrande from "@/assets/espejo-grande-tallado.jpg";
 import mesaVidrio from "@/assets/mesa-parota-vidrio.jpg";
 import mesaCocodrilos from "@/assets/mesa-parota-cocodrilos.jpg";
-import Navbar from "@/components/Navbar";
-import FooterContact from "@/components/FooterContact";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import mesasImg from "@/assets/service-mesas.jpg";
+import espejosImg from "@/assets/service-espejos.jpg";
 
 const images = [
-  { src: talladoSanJudas, title: "Tallado San Judas Tadeo", category: "Tallados" },
-  { src: espejoParota, title: "Espejo con Marco Live Edge", category: "Espejos" },
-  { src: mesaVidrio, title: "Mesa de Centro con Vitrina", category: "Mesas" },
-  { src: talladoSerpiente, title: "Tallado Serpiente en Relieve", category: "Tallados" },
-  { src: espejoGrande, title: "Espejo Grande con Tallado", category: "Espejos" },
+  { src: cruzTallada, title: "Cruz INRI con Rostro de Cristo", category: "Religiosos" },
+  { src: ultimaCena, title: "La Última Cena — Cuadro Monumental", category: "Religiosos" },
+  { src: cobraTallada, title: "Cobra Real en Alto Relieve", category: "Tallados" },
+  { src: sanJudasGrande, title: "San Judas Tadeo Monumental", category: "Religiosos" },
+  { src: mesaVidrio, title: "Mesa con Vitrina de Cristal", category: "Mesas" },
+  { src: platosTallados, title: "Platos Decorativos Tallados", category: "Tallados" },
+  { src: virgenesCruces, title: "Colección Vírgenes y Crucifijos", category: "Religiosos" },
+  { src: medallonCristo, title: "Medallón Cristo Orante", category: "Religiosos" },
+  { src: mantoCristo, title: "Santo Manto Tallado", category: "Religiosos" },
+  { src: rostroOval, title: "Rostro de Cristo en Óvalo Natural", category: "Religiosos" },
+  { src: medallonOrnamental, title: "Medallón Ornamental Redondo", category: "Religiosos" },
+  { src: sanJorgeDragon, title: "San Jorge y el Dragón", category: "Tallados" },
+  { src: sagradoCorazon, title: "Sagrado Corazón en Relieve", category: "Religiosos" },
+  { src: dragonTallado, title: "Dragón con Lámpara", category: "Tallados" },
+  { src: corazonTallado, title: "Corazón Romántico Tallado", category: "Tallados" },
+  { src: sanJudasTaller, title: "San Judas — Desde el Taller", category: "Religiosos" },
+  { src: indioTallado, title: "Guerrero Indígena con Penacho", category: "Tallados" },
+  { src: mesaCocodrilosTaller, title: "Mesa en Proceso — Cocodrilos", category: "Mesas" },
+  { src: planoDragonTigre, title: "Plano CNC — Dragón vs Tigre", category: "Planos CNC" },
+  { src: caballoTallado, title: "Caballo al Galope", category: "Tallados" },
+  { src: guadalupanaParota, title: "Guadalupana Barroca en Parota", category: "Religiosos" },
+  { src: espejoRedondoTallado, title: "Espejo Redondo con Tallado", category: "Espejos" },
+  { src: guadalupanaClara, title: "Guadalupana en Madera Clara", category: "Religiosos" },
+  { src: relieveOracion, title: "Relieve con Oración Tallada", category: "Religiosos" },
+  { src: cruzInriExterior, title: "Cruz INRI — Exterior", category: "Religiosos" },
+  { src: sanJudasPersonalizado, title: "San Judas Personalizado", category: "Religiosos" },
+  { src: virgenLiveEdge, title: "Virgen en Plancha Live Edge", category: "Religiosos" },
+  { src: cristoCrucifijo, title: "Cristo Crucificado en Relieve", category: "Religiosos" },
+  { src: espejoParota, title: "Espejo Live Edge con Cocodrilos", category: "Espejos" },
+  { src: espejoGrande, title: "Espejo Grande con Elefantes", category: "Espejos" },
   { src: mesaCocodrilos, title: "Mesa Live Edge con Cocodrilos", category: "Mesas" },
-  { src: talladoCocodrilo, title: "Cocodrilo Tallado en Madera", category: "Tallados" },
+  { src: talladoSanJudas, title: "San Judas — Tabla Dorada", category: "Religiosos" },
+  { src: talladoSerpiente, title: "Serpiente en Relieve", category: "Tallados" },
+  { src: talladoCocodrilo, title: "Cocodrilo Tallado", category: "Tallados" },
   { src: mesasImg, title: "Mesa de Parota Live Edge", category: "Mesas" },
-  { src: gallery2, title: "Espejo con Marco de Parota", category: "Espejos" },
-  { src: gallery1, title: "Mesa de Centro Rústica", category: "Mesas" },
-  { src: gallery4, title: "Comedor de Parota", category: "Mesas" },
   { src: espejosImg, title: "Espejo Redondo Artesanal", category: "Espejos" },
-  { src: gallery3, title: "Consola de Entrada", category: "Muebles" },
-  { src: gallery5, title: "Arte en Madera Natural", category: "Arte" },
-  { src: disenoImg, title: "Libreros y Gabinetes", category: "Muebles" },
-  { src: gallery6, title: "Banca Industrial", category: "Muebles" },
 ];
 
+const categories = ["Todas", "Religiosos", "Tallados", "Mesas", "Espejos", "Planos CNC"];
+
 const GalleryPage = () => {
+  const [filter, setFilter] = useState("Todas");
+  const filtered = filter === "Todas" ? images : images.filter((img) => img.category === filter);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+
   return (
     <>
       <Navbar />
       <WhatsAppButton />
+      <ImageLightbox
+        images={filtered}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxIndex >= 0}
+        onClose={() => setLightboxIndex(-1)}
+        onNavigate={setLightboxIndex}
+      />
       <main className="pt-24 pb-0">
         {/* Header */}
         <section className="px-8 md:px-16 py-20">
@@ -55,26 +112,48 @@ const GalleryPage = () => {
               Nuestra Galería
             </h1>
             <p className="mt-6 font-body text-lg text-muted-foreground max-w-lg">
-              Cada pieza es irrepetible. Explora nuestra colección de mesas, espejos y muebles artesanales en madera de parota.
+              Más de {images.length} piezas únicas. Tallados religiosos, figuras artísticas, mesas live edge y espejos artesanales en madera de parota.
             </p>
+
+            {/* Filter */}
+            <div className="flex flex-wrap gap-3 mt-10">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setFilter(cat); setLightboxIndex(-1); }}
+                  className={`font-body text-xs uppercase tracking-widest px-5 py-2.5 border transition-all duration-300 ${
+                    filter === cat
+                      ? "bg-foreground text-background border-foreground"
+                      : "border-foreground/20 text-muted-foreground hover:border-foreground hover:text-foreground"
+                  }`}
+                >
+                  {cat}
+                  <span className="ml-2 text-[10px] opacity-60">
+                    ({cat === "Todas" ? images.length : images.filter(i => i.category === cat).length})
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Masonry Grid */}
         <section className="px-4 md:px-8 pb-20">
           <div className="max-w-7xl mx-auto columns-1 md:columns-2 lg:columns-3 gap-4">
-            {images.map((img, i) => (
+            {filtered.map((img, i) => (
               <motion.div
-                key={i}
+                key={`${filter}-${img.title}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.7, delay: (i % 3) * 0.1, ease: [0.2, 0, 0, 1] }}
                 className="relative overflow-hidden group cursor-pointer mb-4 break-inside-avoid"
+                onClick={() => setLightboxIndex(i)}
               >
                 <img
                   src={img.src}
                   alt={img.title}
+                  loading="lazy"
                   className="w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   style={{ transitionTimingFunction: "cubic-bezier(0.2, 0, 0, 1)" }}
                 />
@@ -82,6 +161,12 @@ const GalleryPage = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <p className="font-body text-xs uppercase tracking-widest text-gold mb-1">{img.category}</p>
                   <h3 className="font-display text-xl text-background font-light">{img.title}</h3>
+                </div>
+                {/* Zoom icon */}
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-background">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/>
+                  </svg>
                 </div>
               </motion.div>
             ))}

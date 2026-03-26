@@ -56,6 +56,10 @@ export default {
           warm: "hsl(var(--wood-warm))",
         },
         gold: "hsl(var(--gold))",
+        copper: "hsl(var(--copper))",
+        terracotta: "hsl(var(--terracotta))",
+        amber: "hsl(var(--amber))",
+        gold: "hsl(var(--gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
