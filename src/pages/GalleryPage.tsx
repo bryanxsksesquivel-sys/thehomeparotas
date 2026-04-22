@@ -137,38 +137,34 @@ const GalleryPage = () => {
           </div>
         </section>
 
-        {/* Masonry Grid */}
+        {/* Uniform grid */}
         <section className="px-4 md:px-8 pb-20">
-          <div className="max-w-7xl mx-auto columns-1 md:columns-2 lg:columns-3 gap-4">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((img, i) => (
-              <motion.div
+              <motion.button
+                type="button"
                 key={`${filter}-${img.title}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, delay: (i % 3) * 0.1, ease: [0.2, 0, 0, 1] }}
-                className="relative overflow-hidden group cursor-pointer mb-4 break-inside-avoid"
+                transition={{ duration: 0.5, delay: (i % 6) * 0.06, ease: [0.2, 0, 0, 1] }}
+                className="relative h-[300px] overflow-hidden group cursor-pointer rounded-lg bg-muted text-left"
                 onClick={() => setLightboxIndex(i)}
+                aria-label={`Ver ${img.title} en grande`}
               >
                 <img
                   src={img.src}
-                  alt={img.title}
+                  alt={`${img.title} — ${img.category} en madera de parota, taller en Ocoyoacac`}
                   loading="lazy"
-                  className="w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  style={{ transitionTimingFunction: "cubic-bezier(0.2, 0, 0, 1)" }}
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <p className="font-body text-xs uppercase tracking-widest text-gold mb-1">{img.category}</p>
-                  <h3 className="font-display text-xl text-background font-light">{img.title}</h3>
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-colors duration-500 flex flex-col items-center justify-center text-center px-4">
+                  <p className="font-body text-[10px] uppercase tracking-[0.25em] text-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 mb-2">{img.category}</p>
+                  <h3 className="font-display text-xl text-background font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {img.title}
+                  </h3>
                 </div>
-                {/* Zoom icon */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-background">
-                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/>
-                  </svg>
-                </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </section>
