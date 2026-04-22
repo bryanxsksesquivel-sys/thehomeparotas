@@ -9,6 +9,7 @@ import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AnimatedStats from "@/components/AnimatedStats";
 import SectionDivider from "@/components/SectionDivider";
+import TrustBar from "@/components/TrustBar";
 
 const Index = () => {
   return (
@@ -18,7 +19,7 @@ const Index = () => {
       <WhatsAppButton />
       <main>
         <HeroSection />
-        <SectionDivider />
+        <TrustBar />
         <ProcessSection />
         <SectionDivider />
         <ServicesGrid />
