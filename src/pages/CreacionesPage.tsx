@@ -117,42 +117,52 @@ const CreacionesPage = () => {
           </div>
         </section>
 
-        {/* Grid */}
+        {/* Featured cards 2 cols */}
         <section className="px-4 md:px-8 pb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {filtered.map((item, i) => (
-              <motion.div
+              <motion.article
                 key={item.title}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className={`relative overflow-hidden group cursor-pointer ${item.span}`}
-                onClick={() => setLightboxIndex(i)}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: (i % 4) * 0.08 }}
+                className="group bg-card border border-foreground/10 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl rounded-md"
               >
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  style={{ transitionTimingFunction: "cubic-bezier(0.2, 0, 0, 1)" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="font-body text-xs uppercase tracking-widest text-gold mb-2">{item.category}</p>
-                  <h3 className="font-display text-xl md:text-2xl text-background font-light leading-tight">{item.title}</h3>
-                  <p className="font-body text-sm text-background/70 mt-2 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="block w-full aspect-[4/3] overflow-hidden bg-muted relative"
+                  aria-label={`Ver ${item.title} en grande`}
+                >
+                  <img
+                    src={item.src}
+                    alt={`${item.title} — ${item.category} en parota, hecho a mano en Ocoyoacac`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                </button>
+                <div className="p-6">
+                  <span className="inline-block text-[10px] font-body uppercase tracking-[0.2em] text-gold border border-gold/40 px-2 py-1 rounded">
+                    {item.category}
+                  </span>
+                  <h3 className="mt-4 font-display text-2xl font-light text-foreground tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 font-body text-sm text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
+                  <a
+                    href={`https://wa.me/527203575136?text=${encodeURIComponent(`Hola, me interesa cotizar la pieza: ${item.title} (${item.category}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 text-xs font-body uppercase tracking-widest hover:scale-[1.03] transition-transform"
+                  >
+                    Cotizar esta pieza →
+                  </a>
                 </div>
-                {/* Zoom icon hint */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-background">
-                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/>
-                  </svg>
-                </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </section>
