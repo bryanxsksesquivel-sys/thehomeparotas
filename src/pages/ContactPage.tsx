@@ -28,6 +28,23 @@ const ContactPage = () => {
           </div>
         </section>
 
+        {/* WhatsApp prominent banner */}
+        <section className="px-6 md:px-16 pb-8">
+          <div className="max-w-5xl mx-auto bg-[#25D366]/10 border border-[#25D366]/40 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 rounded-sm">
+            <p className="font-display text-xl md:text-2xl text-foreground font-light">
+              💬 ¿Tienes una idea? Escríbenos ahora y te respondemos en minutos
+            </p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#25D366] text-white px-8 py-4 font-body text-sm uppercase tracking-widest hover:scale-[1.03] transition-transform shadow-md"
+            >
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </section>
+
         {/* Contact cards */}
         <section className="px-8 md:px-16 pb-20">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">

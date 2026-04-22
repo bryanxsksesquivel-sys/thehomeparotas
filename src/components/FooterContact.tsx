@@ -33,6 +33,20 @@ const FooterContact = () => {
           </a>
         </motion.div>
 
+        {/* Trust badges */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-background/10 pt-12 pb-12 text-center">
+          {[
+            "✓ Envíos a todo México",
+            "✓ Madera 100% Natural",
+            "✓ Hecho a Mano",
+            "✓ Garantía de Calidad",
+          ].map((b) => (
+            <p key={b} className="font-body text-xs md:text-sm text-background/70 uppercase tracking-widest">
+              {b}
+            </p>
+          ))}
+        </div>
+
         {/* Info grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-background/10 pt-12">
           <motion.div

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import heroImage from "@/assets/ultima-cena.jpg";
 import cruzTallada from "@/assets/cruz-tallada.jpg";
 import woodTexture from "@/assets/wood-texture.jpg";
@@ -6,8 +7,12 @@ import woodTexture from "@/assets/wood-texture.jpg";
 const WHATSAPP_URL = "https://wa.me/527203575136?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20de%20muebles%20en%20parota.";
 
 const HeroSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+
   return (
-    <section className="relative min-h-svh grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+    <section ref={ref} className="relative min-h-svh grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
       {/* Subtle wood texture bg */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -68,12 +73,21 @@ const HeroSection = () => {
           </a>
           <a
             href="/galeria"
-            className="inline-block border border-foreground px-10 py-5 text-sm font-body uppercase tracking-widest text-foreground transition-all duration-500 hover:bg-foreground hover:text-background"
+            className="inline-block border border-foreground px-10 py-5 text-sm font-body uppercase tracking-widest text-foreground transition-all duration-500 hover:bg-foreground hover:text-background hover:scale-[1.03]"
             style={{ transitionTimingFunction: "cubic-bezier(0.19, 1, 0.22, 1)" }}
           >
             Ver galería
           </a>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-6 font-body text-sm text-muted-foreground"
+        >
+          ⏱ Tiempos de entrega: 2 a 4 semanas según la pieza
+        </motion.p>
 
         {/* Stats */}
         <motion.div
@@ -102,10 +116,11 @@ const HeroSection = () => {
         transition={{ duration: 1.2, delay: 0.3, ease: [0.2, 0, 0, 1] }}
         className="lg:col-span-7 relative overflow-hidden min-h-[60vh] lg:min-h-0"
       >
-        <img
+        <motion.img
           src={heroImage}
-          alt="La Última Cena tallada en madera de parota — CNC Router Ocoyoacac"
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="La Última Cena tallada en madera de parota natural — taller artesanal en Ocoyoacac"
+          style={{ y: parallaxY }}
+          className="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
         />
         {/* Warm gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/40" />
