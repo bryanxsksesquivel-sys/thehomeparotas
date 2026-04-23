@@ -79,18 +79,41 @@
 }
 
 @layer utilities {
-  .text-gold {
-    color: hsl(var(--gold));
+  .text-gold { color: hsl(var(--gold)); }
+  .text-copper { color: hsl(var(--copper)); }
+  .text-terracotta { color: hsl(var(--terracotta)); }
+  .text-amber { color: hsl(var(--amber)); }
+  .bg-wood-dark { background-color: hsl(var(--wood-dark)); }
+  .bg-wood-warm { background-color: hsl(var(--wood-warm)); }
+  .text-on-wood { color: hsl(40 33% 97%); }
+
+  .bg-gradient-warm {
+    background: linear-gradient(135deg, hsl(var(--amber) / 0.18) 0%, hsl(var(--terracotta) / 0.12) 50%, hsl(var(--copper) / 0.15) 100%);
   }
-  .bg-wood-dark {
-    background-color: hsl(var(--wood-dark));
+  .bg-gradient-sunset {
+    background: linear-gradient(135deg, hsl(var(--amber)) 0%, hsl(var(--terracotta)) 60%, hsl(var(--copper)) 100%);
   }
-  .bg-wood-warm {
-    background-color: hsl(var(--wood-warm));
+  .bg-gradient-wood {
+    background: linear-gradient(160deg, hsl(var(--wood-dark)) 0%, hsl(var(--wood-warm)) 100%);
   }
-  .text-on-wood {
-    color: hsl(40 33% 97%);
+  .text-gradient-sunset {
+    background: linear-gradient(135deg, hsl(var(--amber)) 0%, hsl(var(--terracotta)) 50%, hsl(var(--copper)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
+  .shadow-warm {
+    box-shadow: 0 20px 50px -20px hsl(var(--terracotta) / 0.35);
+  }
+  .ring-gold-glow {
+    box-shadow: 0 0 0 1px hsl(var(--gold) / 0.4), 0 10px 40px -10px hsl(var(--gold) / 0.45);
+  }
+}
+
+/* Mobile-first tweaks */
+@media (max-width: 640px) {
+  h1 { letter-spacing: -0.02em; }
+  section { scroll-margin-top: 80px; }
 }
 
 /* Floating particles animation */

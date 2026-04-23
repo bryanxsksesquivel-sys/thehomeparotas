@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 const items = [
-  "✓ Envíos a Todo México",
-  "✓ Madera 100% Natural",
-  "✓ Hecho a Mano",
-  "✓ +100 Piezas Entregadas",
-  "✓ Garantía de Calidad",
+  "Envíos a Todo México",
+  "Madera 100% Natural",
+  "Hecho a Mano",
+  "+100 Piezas Entregadas",
+  "Garantía de Calidad",
 ];
 
 const TrustBar = () => {
@@ -15,24 +15,22 @@ const TrustBar = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-foreground text-background py-3 overflow-hidden"
+      className="bg-gradient-wood text-background py-3 sm:py-4 overflow-hidden border-y border-gold/30"
     >
-      {/* Desktop: row */}
       <div className="hidden md:flex max-w-7xl mx-auto px-6 justify-between items-center gap-6">
         {items.map((it) => (
-          <span key={it} className="font-body text-xs uppercase tracking-widest text-background/80">
-            <span className="text-gold mr-2">✓</span>
-            {it.replace("✓ ", "")}
+          <span key={it} className="font-body text-xs uppercase tracking-widest text-background/90 inline-flex items-center">
+            <span className="text-gold mr-2 text-base leading-none">✓</span>
+            {it}
           </span>
         ))}
       </div>
-      {/* Mobile: ticker */}
       <div className="md:hidden relative">
-        <div className="flex gap-10 whitespace-nowrap animate-[ticker_22s_linear_infinite]">
+        <div className="flex gap-8 whitespace-nowrap animate-[ticker_22s_linear_infinite]">
           {[...items, ...items].map((it, i) => (
-            <span key={i} className="font-body text-xs uppercase tracking-widest text-background/80 shrink-0">
-              <span className="text-gold mr-2">✓</span>
-              {it.replace("✓ ", "")}
+            <span key={i} className="font-body text-[11px] uppercase tracking-widest text-background/90 shrink-0 inline-flex items-center">
+              <span className="text-gold mr-2 text-sm leading-none">✓</span>
+              {it}
             </span>
           ))}
         </div>

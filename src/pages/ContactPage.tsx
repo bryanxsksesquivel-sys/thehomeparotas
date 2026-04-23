@@ -30,20 +30,17 @@ const ContactPage = () => {
       <Navbar />
       <WhatsAppButton />
       <main className="pt-24 pb-0">
-        {/* Amber banner */}
+        {/* Sunset banner */}
         <section className="px-4 md:px-8 pt-6">
-          <div
-            className="max-w-7xl mx-auto p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 rounded-md"
-            style={{ backgroundColor: "#D4A853" }}
-          >
-            <p className="font-display text-xl md:text-2xl text-foreground font-medium">
+          <div className="max-w-7xl mx-auto p-5 sm:p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 rounded-md bg-gradient-sunset shadow-warm">
+            <p className="font-display text-lg sm:text-xl md:text-2xl text-background font-medium text-center md:text-left">
               💬 Respuesta inmediata por WhatsApp — escríbenos ahora
             </p>
             <a
               href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Hola, me interesa cotizar un proyecto.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-foreground text-background px-8 py-4 font-body text-sm uppercase tracking-widest hover:scale-[1.03] transition-transform shadow-md"
+              className="bg-foreground text-background px-6 sm:px-8 py-3 sm:py-4 font-body text-xs sm:text-sm uppercase tracking-widest hover:scale-[1.03] transition-transform shadow-md rounded-sm whitespace-nowrap"
             >
               Escribir por WhatsApp
             </a>
@@ -51,16 +48,16 @@ const ContactPage = () => {
         </section>
 
         {/* Header */}
-        <section className="px-8 md:px-16 py-16">
+        <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-16">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-0.5 bg-primary" />
-              <p className="text-sm font-body uppercase tracking-[0.25em] text-primary">Contacto</p>
+              <div className="w-8 h-0.5 bg-gradient-sunset" />
+              <p className="text-xs sm:text-sm font-body uppercase tracking-[0.25em] text-terracotta">Contacto</p>
             </div>
-            <h1 className="font-display font-light text-5xl md:text-7xl tracking-tight text-foreground">
-              Hablemos de tu proyecto
+            <h1 className="font-display font-light text-4xl sm:text-5xl md:text-7xl tracking-tight text-foreground">
+              Hablemos de tu <span className="text-gradient-sunset">proyecto</span>
             </h1>
-            <p className="mt-6 font-body text-lg text-muted-foreground max-w-lg">
+            <p className="mt-5 sm:mt-6 font-body text-base sm:text-lg text-muted-foreground max-w-lg">
               Cada gran pieza comienza con una conversación. Estamos listos para escuchar tu idea.
             </p>
           </div>
