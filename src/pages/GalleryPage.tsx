@@ -102,33 +102,33 @@ const GalleryPage = () => {
       />
       <main className="pt-24 pb-0">
         {/* Header */}
-        <section className="px-8 md:px-16 py-20">
+        <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-20 bg-gradient-warm">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-0.5 bg-primary" />
-              <p className="text-sm font-body uppercase tracking-[0.25em] text-primary">Portafolio</p>
+              <div className="w-8 h-0.5 bg-gradient-sunset" />
+              <p className="text-xs sm:text-sm font-body uppercase tracking-[0.25em] text-terracotta">Portafolio</p>
             </div>
-            <h1 className="font-display font-light text-5xl md:text-7xl tracking-tight text-foreground">
-              Nuestra Galería
+            <h1 className="font-display font-light text-4xl sm:text-5xl md:text-7xl tracking-tight text-foreground">
+              Nuestra <span className="text-gradient-sunset">Galería</span>
             </h1>
-            <p className="mt-6 font-body text-lg text-muted-foreground max-w-lg">
+            <p className="mt-5 sm:mt-6 font-body text-base sm:text-lg text-muted-foreground max-w-lg">
               Más de {images.length} piezas únicas. Tallados religiosos, figuras artísticas, mesas live edge y espejos artesanales en madera de parota.
             </p>
 
             {/* Filter */}
-            <div className="flex flex-wrap gap-3 mt-10">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mt-8 sm:mt-10">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => { setFilter(cat); setLightboxIndex(-1); }}
-                  className={`font-body text-xs uppercase tracking-widest px-5 py-2.5 border transition-all duration-300 ${
+                  className={`font-body text-[10px] sm:text-xs uppercase tracking-widest px-3 sm:px-5 py-2 sm:py-2.5 border rounded-full transition-all duration-300 ${
                     filter === cat
-                      ? "bg-foreground text-background border-foreground"
-                      : "border-foreground/20 text-muted-foreground hover:border-foreground hover:text-foreground"
+                      ? "bg-gradient-sunset text-background border-transparent shadow-warm"
+                      : "border-foreground/20 text-muted-foreground hover:border-terracotta hover:text-terracotta"
                   }`}
                 >
                   {cat}
-                  <span className="ml-2 text-[10px] opacity-60">
+                  <span className="ml-1.5 sm:ml-2 text-[9px] sm:text-[10px] opacity-70">
                     ({cat === "Todas" ? images.length : images.filter(i => i.category === cat).length})
                   </span>
                 </button>
@@ -138,8 +138,8 @@ const GalleryPage = () => {
         </section>
 
         {/* Uniform grid */}
-        <section className="px-4 md:px-8 pb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="px-3 sm:px-4 md:px-8 py-10 sm:pb-20">
+          <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4">
             {filtered.map((img, i) => (
               <motion.button
                 type="button"
@@ -148,7 +148,7 @@ const GalleryPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (i % 6) * 0.06, ease: [0.2, 0, 0, 1] }}
-                className="relative h-[300px] overflow-hidden group cursor-pointer rounded-lg bg-muted text-left"
+                className="relative h-[180px] sm:h-[260px] lg:h-[300px] overflow-hidden group cursor-pointer rounded-lg bg-muted text-left shadow-sm hover:shadow-warm transition-shadow"
                 onClick={() => setLightboxIndex(i)}
                 aria-label={`Ver ${img.title} en grande`}
               >
@@ -156,11 +156,11 @@ const GalleryPage = () => {
                   src={img.src}
                   alt={`${img.title} — ${img.category} en madera de parota, taller en Ocoyoacac`}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-colors duration-500 flex flex-col items-center justify-center text-center px-4">
-                  <p className="font-body text-[10px] uppercase tracking-[0.25em] text-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 mb-2">{img.category}</p>
-                  <h3 className="font-display text-xl text-background font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-wood-dark/90 via-wood-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 sm:p-4">
+                  <p className="font-body text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-gold mb-1 sm:mb-2">{img.category}</p>
+                  <h3 className="font-display text-sm sm:text-lg lg:text-xl text-background font-light leading-tight">
                     {img.title}
                   </h3>
                 </div>

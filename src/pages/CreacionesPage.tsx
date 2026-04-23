@@ -82,33 +82,32 @@ const CreacionesPage = () => {
       />
       <main className="pt-24 pb-0">
         {/* Header */}
-        <section className="px-8 md:px-16 py-20">
+        <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-20 bg-gradient-warm">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-0.5 bg-primary" />
-              <p className="text-sm font-body uppercase tracking-[0.25em] text-primary">Artesanía</p>
+              <div className="w-8 h-0.5 bg-gradient-sunset" />
+              <p className="text-xs sm:text-sm font-body uppercase tracking-[0.25em] text-terracotta">Artesanía</p>
             </div>
-            <h1 className="font-display font-light text-5xl md:text-7xl tracking-tight text-foreground">
-              Nuestras Creaciones
+            <h1 className="font-display font-light text-4xl sm:text-5xl md:text-7xl tracking-tight text-foreground">
+              Nuestras <span className="text-gradient-sunset">Creaciones</span>
             </h1>
-            <p className="mt-6 font-body text-lg text-muted-foreground max-w-lg">
+            <p className="mt-5 sm:mt-6 font-body text-base sm:text-lg text-muted-foreground max-w-lg">
               Tallados religiosos, figuras artísticas, planos CNC, espejos y mesas — cada pieza hecha a mano con madera de parota 100% natural.
             </p>
 
-            {/* Filter */}
-            <div className="flex flex-wrap gap-3 mt-10">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mt-8 sm:mt-10">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => { setFilter(cat); setLightboxIndex(-1); }}
-                  className={`font-body text-xs uppercase tracking-widest px-5 py-2.5 border transition-all duration-300 ${
+                  className={`font-body text-[10px] sm:text-xs uppercase tracking-widest px-3 sm:px-5 py-2 sm:py-2.5 border rounded-full transition-all duration-300 ${
                     filter === cat
-                      ? "bg-foreground text-background border-foreground"
-                      : "border-foreground/20 text-muted-foreground hover:border-foreground hover:text-foreground"
+                      ? "bg-gradient-sunset text-background border-transparent shadow-warm"
+                      : "border-foreground/20 text-muted-foreground hover:border-terracotta hover:text-terracotta"
                   }`}
                 >
                   {cat}
-                  <span className="ml-2 text-[10px] opacity-60">
+                  <span className="ml-1.5 sm:ml-2 text-[9px] sm:text-[10px] opacity-70">
                     ({cat === "Todas" ? creaciones.length : creaciones.filter(c => c.category === cat).length})
                   </span>
                 </button>
@@ -118,8 +117,8 @@ const CreacionesPage = () => {
         </section>
 
         {/* Featured cards 2 cols */}
-        <section className="px-4 md:px-8 pb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="px-4 md:px-8 py-10 sm:pb-20">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {filtered.map((item, i) => (
               <motion.article
                 key={item.title}
@@ -128,7 +127,7 @@ const CreacionesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: (i % 4) * 0.08 }}
-                className="group bg-card border border-foreground/10 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl rounded-md"
+                className="group bg-card border border-foreground/10 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-warm hover:border-terracotta/40 rounded-md"
               >
                 <button
                   type="button"
@@ -143,11 +142,11 @@ const CreacionesPage = () => {
                     className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </button>
-                <div className="p-6">
-                  <span className="inline-block text-[10px] font-body uppercase tracking-[0.2em] text-gold border border-gold/40 px-2 py-1 rounded">
+                <div className="p-5 sm:p-6">
+                  <span className="inline-block text-[10px] font-body uppercase tracking-[0.2em] text-background bg-gradient-sunset px-2.5 py-1 rounded-full">
                     {item.category}
                   </span>
-                  <h3 className="mt-4 font-display text-2xl font-light text-foreground tracking-tight">
+                  <h3 className="mt-3 sm:mt-4 font-display text-xl sm:text-2xl font-light text-foreground tracking-tight">
                     {item.title}
                   </h3>
                   <p className="mt-2 font-body text-sm text-muted-foreground leading-relaxed">
@@ -157,7 +156,7 @@ const CreacionesPage = () => {
                     href={`https://wa.me/527203575136?text=${encodeURIComponent(`Hola, me interesa cotizar la pieza: ${item.title} (${item.category}).`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 text-xs font-body uppercase tracking-widest hover:scale-[1.03] transition-transform"
+                    className="mt-5 sm:mt-6 inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 text-xs font-body uppercase tracking-widest rounded-sm hover:scale-[1.03] transition-transform shadow-md"
                   >
                     Cotizar esta pieza →
                   </a>

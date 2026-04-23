@@ -21,14 +21,14 @@ const AboutPage = () => {
       <WhatsAppButton />
       <main className="pt-24 pb-0">
         {/* Header */}
-        <section className="px-8 md:px-16 py-20">
+        <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-20 bg-gradient-warm">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-0.5 bg-primary" />
-              <p className="text-sm font-body uppercase tracking-[0.25em] text-primary">Nuestro Taller</p>
+              <div className="w-8 h-0.5 bg-gradient-sunset" />
+              <p className="text-xs sm:text-sm font-body uppercase tracking-[0.25em] text-terracotta">Nuestro Taller</p>
             </div>
-            <h1 className="font-display font-light text-5xl md:text-7xl tracking-tight text-foreground max-w-3xl">
-              Donde la madera cobra vida
+            <h1 className="font-display font-light text-4xl sm:text-5xl md:text-7xl tracking-tight text-foreground max-w-3xl">
+              Donde la madera <span className="text-gradient-sunset">cobra vida</span>
             </h1>
           </div>
         </section>
