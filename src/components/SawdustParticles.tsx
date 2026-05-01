@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 
 const SawdustParticles = () => {
-  const [particles] = useState(() =>
-    Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      size: 2 + Math.random() * 4,
-      duration: 8 + Math.random() * 12,
-      delay: Math.random() * 10,
-      opacity: 0.15 + Math.random() * 0.25,
-    }))
-  );
+  const [particles, setParticles] = useState<Array<{ id: number; left: number; size: number; duration: number; delay: number; opacity: number }>>([]);
+
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 18 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        size: 2 + Math.random() * 4,
+        duration: 10 + Math.random() * 14,
+        delay: Math.random() * 12,
+        opacity: 0.25 + Math.random() * 0.4,
+      }))
+    );
+  }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
