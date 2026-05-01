@@ -1,55 +1,72 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const steps = [
-  { num: "01", icon: "📋", title: "Cotización", desc: "Cuéntanos tu idea por WhatsApp", color: "from-amber to-gold" },
-  { num: "02", icon: "🎨", title: "Diseño", desc: "Creamos un boceto personalizado", color: "from-gold to-terracotta" },
-  { num: "03", icon: "🪵", title: "Elaboración", desc: "Tallamos cada detalle a mano", color: "from-terracotta to-copper" },
-  { num: "04", icon: "🚚", title: "Entrega", desc: "Llevamos tu pieza hasta ti", color: "from-copper to-primary" },
+  { num: "01", title: "Cotización", desc: "Cuéntanos tu idea por WhatsApp y recibe asesoría personalizada." },
+  { num: "02", title: "Diseño", desc: "Creamos un boceto a medida que captura la esencia de tu visión." },
+  { num: "03", title: "Elaboración", desc: "Tallamos cada detalle a mano con precisión CNC en parota natural." },
+  { num: "04", title: "Entrega", desc: "Llevamos tu pieza hasta ti con embalaje seguro a todo México." },
 ];
 
 const ProcessSection = () => {
-  return (
-    <section className="px-5 sm:px-6 md:px-16 py-16 sm:py-24 bg-card relative wood-grain-overlay overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-amber/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-terracotta/10 blur-3xl pointer-events-none" />
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.7", "end 0.3"] });
+  const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-      <div className="max-w-7xl mx-auto relative">
+  return (
+    <section ref={ref} className="bg-background px-6 md:px-12 py-24 md:py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-24"
         >
-          <div className="w-12 h-0.5 bg-gradient-sunset mx-auto mb-5" />
-          <p className="text-xs sm:text-sm font-body uppercase tracking-[0.25em] text-terracotta mb-3 sm:mb-4">Nuestro Proceso</p>
-          <h2 className="font-display font-light text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground">
-            ¿Cómo trabajamos?
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="w-10 h-px bg-gold" />
+            <p className="text-[10px] font-body uppercase tracking-[0.4em] text-gold">El Proceso</p>
+            <div className="w-10 h-px bg-gold" />
+          </div>
+          <h2 className="font-display font-light text-5xl md:text-7xl tracking-tight text-cream">
+            Del bosque a tu <span className="italic text-gradient-gold">hogar</span>
           </h2>
         </motion.div>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-          {/* Connector line desktop */}
-          <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-amber/40 via-terracotta/60 to-copper/40" />
-
-          {steps.map((s, i) => (
+        <div className="relative">
+          {/* Animated gold line - desktop */}
+          <div className="hidden md:block absolute top-8 left-[8%] right-[8%] h-px bg-gold/15">
             <motion.div
-              key={s.num}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="relative text-center"
-            >
-              <div className={`relative mx-auto w-20 h-20 rounded-full bg-gradient-to-br ${s.color} flex items-center justify-center text-3xl shadow-warm ring-4 ring-background`}>
-                {s.icon}
-              </div>
-              <p className="mt-4 font-display text-xl text-gradient-sunset tabular-nums font-medium">{s.num}</p>
-              <h3 className="mt-1 font-display text-xl text-foreground">{s.title}</h3>
-              <p className="mt-2 font-body text-sm text-muted-foreground max-w-[14rem] mx-auto">{s.desc}</p>
-            </motion.div>
-          ))}
+              style={{ width: lineWidth }}
+              className="h-full bg-gradient-to-r from-gold via-gold-bright to-gold shadow-[0_0_20px_hsl(var(--gold)/0.6)]"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.num}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: i * 0.18, ease: [0.2, 0, 0, 1] }}
+                className="relative text-center md:text-left"
+              >
+                {/* Dot on line */}
+                <div className="hidden md:flex absolute top-8 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-4 h-4 rounded-full bg-background border border-gold flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  </div>
+                </div>
+
+                <p className="font-display text-7xl md:text-8xl font-light text-gradient-gold tabular-nums leading-none mb-6 md:mt-20">
+                  {s.num}
+                </p>
+                <h3 className="font-display text-2xl text-cream font-light tracking-tight">{s.title}</h3>
+                <p className="mt-3 font-body text-sm text-cream/55 leading-relaxed max-w-[16rem] mx-auto md:mx-0">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

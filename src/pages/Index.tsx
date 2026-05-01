@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HorizontalGallery from "@/components/HorizontalGallery";
 import ServicesGrid from "@/components/ServicesGrid";
 import AboutSection from "@/components/AboutSection";
 import FooterContact from "@/components/FooterContact";
@@ -7,8 +8,6 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import SawdustParticles from "@/components/SawdustParticles";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import AnimatedStats from "@/components/AnimatedStats";
-import SectionDivider from "@/components/SectionDivider";
 import TrustBar from "@/components/TrustBar";
 
 const Index = () => {
@@ -17,16 +16,13 @@ const Index = () => {
       <SawdustParticles />
       <Navbar />
       <WhatsAppButton />
-      <main>
+      <main className="bg-background">
         <HeroSection />
         <TrustBar />
-        <ProcessSection />
-        <SectionDivider />
+        <HorizontalGallery />
         <ServicesGrid />
-        <SectionDivider />
-        <AnimatedStats />
+        <ProcessSection />
         <AboutSection />
-        <SectionDivider />
         <TestimonialsSection />
         <FooterContact />
       </main>
